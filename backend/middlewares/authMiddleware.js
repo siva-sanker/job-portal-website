@@ -1,7 +1,7 @@
 const jwt=require('jsonwebtoken');
 const User=require('../models/User');
 
-const protect=async (req,res)=>{
+const protect=async (req,res,next)=>{
   try{
     let token=req.headers.authorization;
     

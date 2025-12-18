@@ -9,7 +9,7 @@ exports.register=async (req,res)=>{
   try{
     const {name,email,password,avatar,role}=req.body;
     const userExists=await User.findOne({email});
-    if(userExists)  return res.stats(400).json({message:"user already exists"});
+    if(userExists)  return res.status(400).json({message:"user already exists"});
 
     const user=await User.create({name,email,password,role,avatar});
 
@@ -58,5 +58,5 @@ exports.login= async(req,res) =>{
 };
 
 exports.getMe= async(req,res) =>{
-    res.json(req.user);
+  res.json(req.user);
 };
