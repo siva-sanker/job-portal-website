@@ -57,3 +57,4 @@ mongodb-data/
 # ===============================
 tmp/
 temp/
+uploads/*
