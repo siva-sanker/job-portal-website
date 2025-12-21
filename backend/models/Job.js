@@ -8,7 +8,7 @@ const jobSchema=new mongoose.Schema({
     category:{type:String },
     type:{
         type:String,
-        enum:["Remote","Full time",'part time','internship','contract'],
+        enum:["Remote","Full-Time",'Part-Time','internship','contract'],
         required:true
     },
     company:{type:mongoose.Schema.Types.ObjectId,ref:"User",required:true},
