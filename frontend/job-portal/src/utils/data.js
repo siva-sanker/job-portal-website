@@ -56,7 +56,7 @@ export const employerFeatures = [
 
 export const NAVIGATION_MENU = [
   {
-    id: "dashboard",
+    id: "employer-dashboard",
     name: "Dashboard",
     icon: LayoutDashboard
   },

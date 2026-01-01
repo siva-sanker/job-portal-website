@@ -4,7 +4,11 @@ import{
   Mail,Lock,Eye,EyeOff,Loader,AlertCircle,CheckCircle
 } from 'lucide-react';
 import { validateEmail } from '../../utils/helper';
+import {useAuth} from '../../context/AuthContext';
+import {API_PATHS} from '../../utils/apiPaths';
+import axiosInstance from '../../utils/axiosInstance'
 const Login = () => {
+  const {login} =useAuth();
   const [formData,setFormData]=useState({
     email:'',
     password:'',
@@ -62,7 +66,33 @@ const Login = () => {
     setFormState(prev=>({...prev,loading:true}));
 
     try{
-      setFormState({success:true})
+      const response= await axiosInstance.post(API_PATHS.AUTH.LOGIN,{
+        email:formData.email,
+        password:formData.password,
+        rememberMe:formData.rememberMe
+      });
+
+      setFormState(prev=>({
+        ...prev,
+        loading:false,
+        success:true,
+        errors:{}
+      }));
+
+      const {token, role}=response.data;
+
+      if(token){
+        login(response.data, token);
+        setTimeout(() => {
+          window.location.href=
+          role==="employer"? "/employer-dashboard" : "/find-jobs";
+        }, 2000);
+      }
+
+      setTimeout(() => {
+        const redirectPath=user.role === 'employer'?'/employer-dashboard':'/find-jobs';
+        window.location.href=redirectPath;
+      }, 1500);
     }catch(error){
       setFormState(prev=>({
         ...prev,
@@ -85,7 +115,7 @@ const Login = () => {
           <CheckCircle className='w-16 text-green-500 mx-auto mb-4'/>
           <h2 className='text-2xl font-bold text-gray-900 mb-2'> welcome back</h2>
           <p className='text-gray-600 mb-4'>
-            youi have success fully logged in
+            you have success fully logged in
           </p>
         </motion.div>
       </div>
