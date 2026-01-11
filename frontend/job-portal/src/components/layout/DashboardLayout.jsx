@@ -76,7 +76,7 @@ const DashboardLayout = ({activeMenu,children}) => {
     <div className='flex h-screen bg-gray-50'>
       {/* sidebar  */}
       <div className={`fixed inset-y-0 left-0 z-50 transition-transform duration-300 transform ${
-        isMobile ? sidebarOpen? "translate-x-0":"translate-x-full":"translate-x-0"} 
+        isMobile ? sidebarOpen ? "translate-x-0":"-translate-x-full":"translate-x-0"} 
         ${sidebarCollapsed ?"w-16":"w-64"} bg-white border-r border-gray-200`}>
 
           <div className="flex items-center h-16 border-b border-gray-200 pl-6">
