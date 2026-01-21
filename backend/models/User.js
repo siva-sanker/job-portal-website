@@ -9,12 +9,14 @@ const userSchema=new mongoose.Schema({
   avatar:String,
   resume:String,
   companyName:String,
-  companyLogo:String
+  companyLogo:String,
+  companyDescription:String
 }, {timestamps:true} );
 
-userSchema.pre("save", async function (next) {
+userSchema.pre("save", async function () {
+  console.log("✅ CORRECT PRE-SAVE LOADED");
   if (!this.isModified("password")) {
-    // return next();
+    return;
   }
   this.password = await bcrypt.hash(this.password, 10);
 });

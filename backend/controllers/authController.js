@@ -48,7 +48,7 @@ exports.login= async(req,res) =>{
       avatar:user.avatar || '',
       companyName:user.companyName || '',
       companyLogo:user.companyLogo || '',
-      conpanyDescription:user.companyDescription || '',
+      companyDescription:user.companyDescription || '',
       resume:user.resume || '',
     });
   }

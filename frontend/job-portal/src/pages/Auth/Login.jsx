@@ -98,7 +98,7 @@ const Login = () => {
         ...prev,
         loading:false,
         errors:{
-          submit:error.oresponse?.data?.message || 'loginf failed. please check your credentials.'
+          submit:error.response?.data?.message || 'login failed. please check your credentials.'
         }
       }))
     }
