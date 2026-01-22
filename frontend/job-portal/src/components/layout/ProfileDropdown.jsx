@@ -35,13 +35,13 @@ const ProfileDropdown = ({isOpen,onToggle,avatar,companyName,email,onLogout}) =>
           <a 
           onClick={()=> navigate(userRole === 'jobseeker' ? '/profile':'/company-profile')}
           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
-            View profile
+            View Profile
           </a>
           <div className="border-t border-gray-100 mt-2 pt-2">
             <a href="#"
             onClick={onLogout}
             className="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors">
-              sign out
+              Sign Out
             </a>
           </div>
         </div>

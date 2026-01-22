@@ -25,7 +25,7 @@ const Header = () => {
             <a onClick={()=>navigate("/find-jobs")}
                 className='text-gray-600 hover:text-gray-900 transition-colors font-medium'
             >
-                find jobs
+                Find Jobs
             </a>
             <a onClick={()=>{
               navigate(
@@ -34,7 +34,7 @@ const Header = () => {
                 :'/login'
               );
             }}
-            className='text-gray-600 hover:text-gray-900 transition-colors font-medium'></a>
+            className='text-gray-600 hover:text-gray-900 transition-colors font-medium'>For Employers</a>
           </nav>
           <div className='flex items-center space-x-3'>
             {isAuthenticated?(
@@ -48,12 +48,12 @@ const Header = () => {
                 <a href="/login" 
                   className='text-gray-600 hover:text-gray-900 transition-colors font-medium px-4 py-2 rounded-lg hover:bg-gray-500'
                 >
-                  login
+                  Login
                 </a>
                 <a href="/signup" 
                   className='bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-700 to-purple-700 transition-all duration-300 shadow-sm hover:shadow-md'
                 >
-                  signup
+                  SignUp
                 </a>
               </>
             )}

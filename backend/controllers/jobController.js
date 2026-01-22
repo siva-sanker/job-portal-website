@@ -1,7 +1,7 @@
 const Job=require('../models/Job');
 const User=require('../models/User');
 const Application=require('../models/Application');
-const SavedJob=require('../models/SavedJob');
+const savedJob=require('../models/SavedJob');
 
 exports.createJob= async(req,res)=>{
 	try{

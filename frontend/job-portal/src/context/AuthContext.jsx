@@ -27,7 +27,7 @@ export const AuthProvider= ({children})=>{
       if(token && userStr){
         const userData=JSON.parse(userStr);
         setUser(userData);
-        setIsAuthenticated(false);
+        setIsAuthenticated(true);
       }
     }
     catch(err){
