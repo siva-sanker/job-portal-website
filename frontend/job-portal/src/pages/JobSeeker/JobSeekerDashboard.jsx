@@ -110,7 +110,7 @@ const JobSeekerDashboard = () => {
   },[filters,user]);
 
   const handleFilterChange=(key,value)=>{
-    setFilters((prev)=>({...prev, [section]:!prev[section] }));
+    setFilters((prev)=>({...prev, [key]:value }));
   };
   const toggleSection=(section)=>{
     setExpandedSections((prev)=>({...prev, [section]:!prev[section] }));
