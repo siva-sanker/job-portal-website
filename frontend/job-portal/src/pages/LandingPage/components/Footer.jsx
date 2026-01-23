@@ -14,20 +14,20 @@ const Footer = () => {
                 <div className='h-10 w-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center'>
                   <Briefcase className='w-6 h-6 text-white'/>
                 </div>
-                <h3 className='text-2xl font-bold text-gray-800'>Jobportal</h3>
+                <h3 className='text-2xl font-bold text-gray-800'>JobPortal</h3>
               </div>
-              <p className={`text-sm text-gray-600 max-w-md mx-auto`}>
+              <p className={`text-sm text-gray-600 max-w-md mx-auto capitalize`}>
                 connecting talented professionals with innovative companies worldwide. your career success is our mission
               </p>
             </div>
 
             {/* copyright */}
             <div className="space-y-2">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 capitalize">
                 {new Date().getFullYear()} time to program.
               </p>
-              <p className="text-xs text-gray-500">
-                madee with love happy coding
+              <p className="text-xs text-gray-500 capitalize">
+                - Siva S
               </p>
             </div>
           </div>

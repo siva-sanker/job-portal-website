@@ -28,10 +28,10 @@ const Analytics = () => {
 		},
 		{
 			icon:TrendingUp,
-			title:'successful hires',
-			value:'89k',
-			growth:'+18%',
-			color:'green'	
+			title:'match rate',
+			value:'94%',
+			growth:'+8%',
+			color:'orange'	
 		},
 	];
   return (
@@ -44,11 +44,11 @@ const Analytics = () => {
 					viewport={{once:true}}
           className='text-center mb-16'
 				>
-					<h2 className='text-4xl md:text-5xl font-bold text-gray-900 mb-6'>
-						platform
-						<span className='bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent'>analytics</span>
+					<h2 className='text-4xl md:text-5xl font-bold text-gray-900 mb-6 capitalize'>
+						platform{" "}
+						<span className='bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent'>Analytics</span>
 					</h2>
-					<p className='text-xl text-gray-600 max-w-3xl mx-auto'>
+					<p className='text-xl text-gray-600 max-w-3xl mx-auto capitalize'>
 						real time insights and data-driven results that showcase the power of our platform in connecting talent with opportunities.
 					</p>
 				</motion.div>
@@ -72,8 +72,8 @@ const Analytics = () => {
 									{stat.growth}
 								</span>
 							</div>
-							<h3 className='text-3xl font-bold text-gray-900 mb-2'>{stat.value}</h3>
-							<p className='text-gray-600'>{stat.title}</p>
+							<h3 className='text-3xl font-bold text-gray-900 mb-2 uppercase'>{stat.value}</h3>
+							<p className='text-gray-600 capitalize'>{stat.title}</p>
 						</motion.div>
 					))}
 				</div>

@@ -44,7 +44,7 @@ const StatCard=({title,value,icon:Icon,trend,trendValue,color="blue"})=>{
     >
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-white-80 text-sm font-medium">{title}</p>
+          <p className="text-white-80 text-sm font-medium capitalize">{title}</p>
           <p className="text-3xl font-bold mt-1">{value}</p>
           {trend && (
             <div className="flex items-center mt-2 text-sm">
@@ -125,11 +125,11 @@ const EmployerDashboard = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <Card
             title="Recent Job Posts"
-            subtitle="Your latest job postings"
+            subtitle="Your Latest Job Postings"
             headerAction={
               <button
               className='text-sm text-blue-600 hover:text-blue-700 font-medium'
-              onClick={()=>navigate("/employer-dashboard")}
+              onClick={()=>navigate("/manage-jobs")}
               >View all</button>
             }
             >
@@ -141,11 +141,11 @@ const EmployerDashboard = () => {
             </Card>
             <Card
             title="Recent Applications"
-            subtitle="Latest candidate applications"
+            subtitle="Latest Candidate Applications"
             headerAction={
               <button
               className='text-sm text-blue-600 hover:text-blue-700 font-medium'
-              onClick={()=>navigate("/employer-dashboard")}
+              onClick={()=>navigate("/manage-jobs")}
               >View all</button>
             }
             >
@@ -165,7 +165,7 @@ const EmployerDashboard = () => {
           {/* quick actions  */}
           <Card
           title="Quick Actions"
-          subtitle="Common tasks to get you started"
+          subtitle="Common Tasks to Get You Started"
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[

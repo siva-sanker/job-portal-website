@@ -144,9 +144,9 @@ const DashboardLayout = ({activeMenu,children}) => {
               )}
 
               <div>
-                <h1 className="text-base font-semibold text-gray-900">Welcome back</h1>
-                <p className="text-sm text-gray-500 hidden sm:block">
-                  here's whats happening wit your jobs today
+                <h1 className="text-base font-semibold text-gray-900 capitalize">Welcome back</h1>
+                <p className="text-sm text-gray-500 hidden sm:block capitalize">
+                  here's whats happening with your jobs today
                 </p>
               </div>
             </div>
@@ -163,6 +163,7 @@ const DashboardLayout = ({activeMenu,children}) => {
                   companyName={user?.name || ""}
                   email={user?.email || ""}
                   onLogout={logout}
+                  userRole={user?.role || ""}
                 />
               </div>
           </header>

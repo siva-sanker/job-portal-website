@@ -193,7 +193,7 @@ const JobPostingForm = () => {
                 <h2 className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
                   Post a New Job
                 </h2>
-                <p className="text-sm text-gray-600 mt-1">
+                <p className="text-sm text-gray-600 mt-1 capitalize">
                   Fill out the form below to create your job posting
                 </p>
               </div>
@@ -211,7 +211,7 @@ const JobPostingForm = () => {
 
           <div className="space-y-6">
             {/* job title  */}
-            <InputField label="job title" id='jobTitle' placeholder="e.g., senior frontend developer"
+            <InputField label="Job Title" id='jobTitle' placeholder="e.g., Senior Frontend Developer"
             value={formData.jobTitle}
             onChange={(e)=>handleInputChange("jobTitle",e.target.value)}
             errors={errors.jobTitle}
@@ -239,7 +239,7 @@ const JobPostingForm = () => {
             {/* category and job type  */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <SelectField
-                label="category"
+                label="Category"
                 id="category"
                 value={formData.category}
                 onChange={(e)=>handleInputChange("category",e.target.value)}
@@ -255,7 +255,7 @@ const JobPostingForm = () => {
                 value={formData.jobType}
                 onChange={(e)=>handleInputChange("jobType",e.target.value)}
                 options={JOB_TYPES}
-                placeholder="Select job type"
+                placeholder="Select a Job Type"
                 errors={errors.jobType}
                 required
                 icon={Briefcase}

@@ -113,10 +113,12 @@ const Login = () => {
         className='bg-white p-8 rounded-xl shadow-lg max-w-md w-full text-center'
         >
           <CheckCircle className='w-16 text-green-500 mx-auto mb-4'/>
-          <h2 className='text-2xl font-bold text-gray-900 mb-2'> welcome back</h2>
-          <p className='text-gray-600 mb-4'>
-            you have success fully logged in
+          <h2 className='text-2xl font-bold text-gray-900 mb-2 capitalize'>welcome back</h2>
+          <p className='text-gray-600 mb-4 capitalize'>
+            you have successfully logged in
           </p>
+          <div className="animate-spin w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full mx-auto"/>
+          <p className="text-sm text-gray-500 mt-2">Redirecting to your dashboard....</p>
         </motion.div>
       </div>
     );
@@ -131,12 +133,12 @@ const Login = () => {
       className='bg-white p-8 rounded-xl shadow-lg max-w-md w-full'
       >
         <div className='text-center mb-8'>
-          <h2 className='text-2xl font-bold text-gray-900 mb-2'>welcome back</h2>
-          <p className='text-gray-600'>sign in to your account</p>
+          <h2 className='text-2xl font-bold text-gray-900 mb-2 capitalize'>welcome back</h2>
+          <p className='text-gray-600 capitalize'>sign in to your account</p>
 
           <form onSubmit={handleSubmit} className='space-y-6'>
             <div>
-              <label className='block text-sm text-left font-medium text-gray-700 mb-2'>
+              <label className='block text-sm text-left font-medium text-gray-700 mb-2 capitalize'>
                 email address
               </label>
               <div className='relative'>
@@ -148,7 +150,7 @@ const Login = () => {
                 className={`w-full pl-10 pr-4 py-3 rounded-lg border
                   ${formState.errors.email?'border-red-500':'border-gray-300'}
                   focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors`}
-                  placeholder='enter your email'
+                  placeholder='Enter Your Email'
                 />
               </div>
               {formState.errors.email &&(
@@ -160,7 +162,7 @@ const Login = () => {
             </div>
 
             <div>
-              <label className='block text-left text-sm font-medium text-gray-700 mb-2'>
+              <label className='block text-left text-sm font-medium text-gray-700 mb-2 capitalize'>
                 password
               </label>
               <div className='relative'>
@@ -173,7 +175,7 @@ const Login = () => {
                   className={`w-full pl-10 pr-12 py-3 rounded-lg border
                     ${formState.errors.password?'border-red-500':'border-gray-300'}
                     focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors`}
-                    placeholder='enter your password'
+                    placeholder='Enter Your Password'
                 />
                 <button
                 type='button'
@@ -194,7 +196,7 @@ const Login = () => {
             {/* submit erros  */}
             {formState.errors.submit && (
               <div className='bg-red-50 border-red-200 rounded-lg p-3'>
-                <p className='text-red-700 text-sm flex items-center'>
+                <p className='text-red-700 text-sm flex items-center capitalize'>
                   <AlertCircle className='w-4 h-4 mr-2'/>
                   {formState.errors.submit}
                 </p>
@@ -212,12 +214,12 @@ const Login = () => {
                   <span>Signing in...</span>
                 </>
               ):(
-                <span>sign in</span>
+                <span>Sign In</span>
               )}
             </button>
 
             <div className='text-center'>
-              <p className='text-gray-600'>
+              <p className='text-gray-600 capitalize'>
                 dont have an account?{' '}
                 <a href="/signup" className='text-blue-600 hover:text-blue-700 font-medium'>
                   create one here

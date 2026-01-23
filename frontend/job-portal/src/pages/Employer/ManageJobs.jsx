@@ -173,7 +173,7 @@ const ManageJobs = () => {
                 <h1 className="text-xl md:text-2xl font-semibold text-gray-900">
                   Job Management
                 </h1>
-                <p className="text-sm text-gray-600 mt-1">
+                <p className="text-sm text-gray-600 mt-1 capitalize">
                   Manage your Job Postings and track applications
                 </p>
               </div>
@@ -284,10 +284,10 @@ const ManageJobs = () => {
                         >
                           <td className="px-6 py-5 whitespace-nowrap min-w-[200px] sm:min-w-0">
                             <div>
-                              <div className="text-sm font-semibold text-gray-900">
+                              <div className="text-sm font-semibold text-gray-900 capitalize">
                                 {job.title}
                               </div>
-                              <div className="text-xs text-gray-500 font-medium">
+                              <div className="text-xs text-gray-500 font-medium capitalize">
                                 {job.company}
                               </div>
                             </div>

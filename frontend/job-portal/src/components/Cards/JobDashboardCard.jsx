@@ -10,8 +10,8 @@ const JobDashboardCard = ({job}) => {
           <Briefcase className='h-5 w-5 text-blue-600'/>
         </div>
         <div>
-          <h4 className="text-[15px] font-medium text-gray-900">{job.title}</h4>
-          <p className="text-xs text-gray-500">
+          <h4 className="text-[15px] font-medium text-gray-900 capitalize">{job.title}</h4>
+          <p className="text-xs text-gray-500 capitalize">
             {job.location} . {moment(job.createdAt)?.format("DD MM YYYY")}
           </p>
         </div>

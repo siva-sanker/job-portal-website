@@ -31,7 +31,7 @@ const JobCard = ({job,onClick,onToggleSave,onApply,saved,hideApply}) => {
           )}
 
           <div className="flex-1">
-            <h3 className="font-semibold text-gray-900 text-base group-hover:text-blue-600 transition-colors leading-snug">
+            <h3 className="font-semibold text-gray-900 text-base group-hover:text-blue-600 transition-colors leading-snug capitalize">
               {job?.title}
             </h3>
             <p className="text-gray-600 text-sm flex items-center gap-2 mt-1">
@@ -57,7 +57,7 @@ const JobCard = ({job,onClick,onToggleSave,onApply,saved,hideApply}) => {
 
       <div className="mb-5">
         <div className="flex items-center gap-2 text-xs">
-          <span className="flex items-center gap-1.5 bg-gray-100 text-gray-700 px-3 py-1  rounded-full font-medium">
+          <span className="flex items-center gap-1.5 bg-gray-100 text-gray-700 px-3 py-1  rounded-full font-medium capitalize">
             <MapPin className='w-3 h-3' />
             {job?.location}
           </span>

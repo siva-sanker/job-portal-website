@@ -120,6 +120,7 @@ const SavedJobs = () => {
                         job={savedJob?.job}
                         onClick={()=>navigate(`/job/${savedJob?.job._id}`)}
                         onToggleSave={()=>handleUnsaveJobs(savedJob?.job._id)}
+                        saved
                       />
                     ))}
                   </div>

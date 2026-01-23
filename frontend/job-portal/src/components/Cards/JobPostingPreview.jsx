@@ -33,14 +33,14 @@ const JobPostingPreview = ({formData,setIsPreview}) => {
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-0">
                   <div className="flex-1">
-                    <h1 className="text-lg lg:text-xl font-semibold mb-2 leading-tight text-gray-900">
+                    <h1 className="text-lg lg:text-xl font-semibold mb-2 leading-tight text-gray-900 capitalize">
                       {formData.jobTitle}
                     </h1>
 
                     <div className="flex items-center space-x-4 text-gray-600">
                       <div className="flex items-center space-x-2">
                         <MapPin className='h-4 w-4' />
-                        <span className="text-sm font-medium">
+                        <span className="text-sm font-medium capitalize">
                           {formData.isRemote ? "Remote":formData.location}
                         </span>
                         {formData.isRemote && formData.location && (
@@ -123,10 +123,10 @@ const JobPostingPreview = ({formData,setIsPreview}) => {
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-gray-900 flex items-center space-x-3">
                   <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-purple-600 rounded-full"></div>
-                  <span className="text-base md:text-lg">About this Role</span>
+                  <span className="text-base md:text-lg">About this role</span>
                 </h3>
                 <div className="bg-gray-50 border border-gray-100 rounded-xl p-6">
-                  <div className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">
+                  <div className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap capitalize">
                     {formData.description}
                   </div>
                 </div>
@@ -136,10 +136,10 @@ const JobPostingPreview = ({formData,setIsPreview}) => {
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-gray-900 flex items-center space-x-3">
                   <div className="w-1 h-8 bg-gradient-to-b from-purple-500 to-pink-600 rounded-full"></div>
-                  <span className="text-base md:text-lg">What We're lookign for</span>
+                  <span className="text-base md:text-lg">What we're looking for</span>
                 </h3>
                 <div className="bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-100 rounded-xl p-6">
-                  <div className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">
+                  <div className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap capitalize">
                     {formData.requirements}
                   </div>
                 </div>
