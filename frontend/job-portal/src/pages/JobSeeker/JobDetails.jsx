@@ -1,5 +1,5 @@
 import React from 'react'
-import { MapPin,DollarSign,Building2,Clock,Users, User } from 'lucide-react';
+import { MapPin,DollarSign,Building2,Clock,Users, User, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useParams } from 'react-router-dom';
 import axiosInstance from '../../utils/axiosInstance';
@@ -9,10 +9,12 @@ import Navbar from '../../components/layout/Navbar';
 import moment from 'moment';
 import StatusBadge from '../../components/StatusBadge';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const JobDetails = () => {
   const {user}=useAuth();
   const {jobId}=useParams();
+  const navigate=useNavigate();
 
   const [jobDetails,setJobDetails]=useState(null);
 
@@ -55,6 +57,13 @@ const JobDetails = () => {
 
       <div className="container mx-auto pt-24">
         {/* main content card  */}
+        <button onClick={() => navigate('/find-jobs')}
+          className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all duration-200 shadow-sm"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to Jobs
+        </button>
+
         {jobDetails && (
           <div className="bg-white p-6 rounded-lg">
             {/* hero seection with clean background  */}

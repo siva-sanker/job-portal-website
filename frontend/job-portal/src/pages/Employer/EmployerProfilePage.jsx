@@ -161,7 +161,7 @@ const EmployerProfilePage = () => {
                       className='w-20 h-20 rounded-lg object-cover border-b border-blue-50'
                     />
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-800">
+                      <h3 className="text-lg font-semibold text-gray-800 capitalize">
                         {profileData.companyName}
                       </h3>
                       <div className="flex items-center text-sm text-gray-600 mt-1">
@@ -178,7 +178,7 @@ const EmployerProfilePage = () => {
                 <h2 className="text-lg font-semibold text-gray-800 border-b border-gray-200 px-2 mb-6">
                   About Company
                 </h2>
-                <p className="text-sm text-gray-700 leading-relaxed bg-gray-50 p-6 rounded-lg">
+                <p className="text-sm text-gray-700 leading-relaxed bg-gray-50 p-6 rounded-lg capitalize">
                   {profileData.companyDescription}
                 </p>
               </div>

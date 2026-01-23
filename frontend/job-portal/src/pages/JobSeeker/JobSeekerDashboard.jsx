@@ -190,6 +190,23 @@ const JobSeekerDashboard = () => {
   if(jobs.length ==0 && loading){
     return <LoadingSpinner />
   }
+
+  const handleJobClick = (jobId) => {
+    if (!user) {
+      toast.error("Please log in to view job details");
+      return;
+    }
+    navigate(`/job/${jobId}`);
+  };
+
+  const handleApply = (jobId) => {
+    if (!user) {
+      toast.error("Please log in to apply for jobs");
+      return;
+    }
+    applyToJob(jobId);
+  };
+
   return (
     <div className='bg-gradient-to-r from-blue-50 via-white to-purple-50'>
       <Navbar />
@@ -297,9 +314,9 @@ const JobSeekerDashboard = () => {
                       <JobCard
                         key={job._id}
                         job={job}
-                        onClick={()=>navigate(`/job/${job._id}`)}
+                        onClick={() => handleJobClick(job._id)}
                         onToggleSave={()=>toggleSaveJob(job._id,job.isSaved)}
-                        onApply={()=>applyToJob(job._id)}
+                        onApply={() => handleApply(job._id)}
                       />
                     ))}
                   </div>
