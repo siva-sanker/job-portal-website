@@ -77,8 +77,8 @@ const ApplicantProfilePreview = ({ selectedApplicant,setSelectedApplicant,handle
               <h5 className="font-medium text-gray-900 mb-2">
                 Applied position
               </h5>
-              <p className="text-gray-700">{selectedApplicant.job.title}</p>
-              <p className="text-gray-600 text-sm mt-1">
+              <p className="text-gray-700 capitalize">{selectedApplicant.job.title}</p>
+              <p className="text-gray-600 text-sm mt-1 capitalize">
                 {selectedApplicant.job.location} . {selectedApplicant.job.type}
               </p>
             </div>

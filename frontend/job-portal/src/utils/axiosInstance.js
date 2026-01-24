@@ -29,7 +29,7 @@ axiosInstance.interceptors.response.use(
   },
   (error)=>{
     if(error.response){
-      if(error.response.status===401){
+      if(error.response.status===401 &&!error.config.url.includes("/login")){
         window.location.href="/";
       } else if (error.response.status===500){
         console.error("Server error.please try again")

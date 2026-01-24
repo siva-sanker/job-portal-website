@@ -6,9 +6,11 @@ import{
 import { validateEmail } from '../../utils/helper';
 import {useAuth} from '../../context/AuthContext';
 import {API_PATHS} from '../../utils/apiPaths';
-import axiosInstance from '../../utils/axiosInstance'
+import axiosInstance from '../../utils/axiosInstance';
+import {useNavigate} from 'react-router-dom';
 const Login = () => {
   const {login} =useAuth();
+  const navigate=useNavigate();
   const [formData,setFormData]=useState({
     email:'',
     password:'',
@@ -72,6 +74,13 @@ const Login = () => {
         rememberMe:formData.rememberMe
       });
 
+      const {token, role}=response.data;
+      if (!token) {
+        throw new Error("No token received");
+      }
+
+      login(response.data, token);
+      
       setFormState(prev=>({
         ...prev,
         loading:false,
@@ -79,20 +88,10 @@ const Login = () => {
         errors:{}
       }));
 
-      const {token, role}=response.data;
 
-      if(token){
-        login(response.data, token);
         setTimeout(() => {
-          window.location.href=
-          role==="employer"? "/employer-dashboard" : "/find-jobs";
+          navigate(role==="employer"? "/employer-dashboard" : "/find-jobs");
         }, 2000);
-      }
-
-      setTimeout(() => {
-        const redirectPath=user.role === 'employer'?'/employer-dashboard':'/find-jobs';
-        window.location.href=redirectPath;
-      }, 1500);
     }catch(error){
       setFormState(prev=>({
         ...prev,

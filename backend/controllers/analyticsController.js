@@ -26,7 +26,7 @@ exports.getEmployerAnalytics= async(req,res)=>{
         const totalApplications= await Application.countDocuments({job:{ $in:jobIds }});
         const totalHired= await Application.countDocuments({
             job:{ $in: jobIds},
-            status:"Accepted"
+            status:"accepted"
         });
 
         const activeJobsLast7= await Job.countDocuments({
@@ -54,12 +54,12 @@ exports.getEmployerAnalytics= async(req,res)=>{
 
         const hiredLast7= await Application.countDocuments({
             job: { $in:jobIds},
-            status:"Accepted",
+            status:"accepted",
             createdAt: { $gte:last7Days, $lte:now}
         });
         const hiredPrev7= await Application.countDocuments({
             job: { $in:jobIds},
-            status:"Accepted",
+            status:"accepted",
             createdAt: { $gte:prev7Days, $lte:last7Days}
         });
 

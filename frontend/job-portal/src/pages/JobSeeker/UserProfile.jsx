@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
-import { Save,X,Trash2 } from 'lucide-react';
+import { Save,X,Trash2, ArrowLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../utils/axiosInstance';
 import { API_PATHS } from '../../utils/apiPaths';
 import { useAuth } from '../../context/AuthContext';
@@ -11,7 +12,7 @@ import { Link } from 'react-router-dom';
 
 const UserProfile = () => {
   const {user,updateUser}=useAuth();
-// console.log(user);
+  const navigate=useNavigate();
 
   const [profileData,setProfileData]= useState({
     name:user?.name || "",
@@ -19,6 +20,7 @@ const UserProfile = () => {
     avatar:user?.avatar || "",
     resume:user?.resume || "",
   });
+console.log(profileData);
 
   const [formData,setFormData]=useState({...profileData});
   const [uploading,setUploading]=useState({avatar:false,logo:false});
@@ -50,7 +52,6 @@ const UserProfile = () => {
 
   const handleImageChange= (e,type)=>{
     const file=e.target.files[0];
-    console.log(file);
     
     if(file){
       const previewUrl= URL.createObjectURL(file);
@@ -120,17 +121,29 @@ const UserProfile = () => {
   return (
     <div className="bg-gradient-to-br from-blue-50 via-white to-purple-50">
       <Navbar />
+      <div className="max-w-full mx-auto px-4 sm:px-8 lg:px-40 mt-20">
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Jobs
+        </button>
+      </div>
 
-      <div className="min-h-screen bg-gray-50 py-8 px-4 mt-16 lg:m-20">
+      <div className="min-h-screen bg-gray-50 py-8 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             {/* Header  */}
             <div className="bg-gradient-to-r from-blue-500 to-blue-600 px-8 py-6 flex justify-between items-center">
-              <h1 className="text-xl font-medium text-white">Profile</h1>
+              <h1 className="text-xl font-medium text-white">User Profile</h1>
             </div>
 
             <div className="p-8">
               <div className="space-y-6">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Profile Avatar
+                </label>
                 <div className="flex items-center space-x-4">
                   <div className="relative">
                     <img src={formData?.avatar} alt="Avatar"
@@ -145,7 +158,6 @@ const UserProfile = () => {
                   
                   <div>
                     <label className="block">
-                      <span className="sr-only">Choose avatar</span>
                       <input type="file" accept='image/*' onChange={(e)=>handleImageChange(e,"avatar")}
                         className='block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition-colors'
                       />
@@ -177,12 +189,11 @@ const UserProfile = () => {
                   />
                 </div>
 
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Resume
+                </label>
                 {user?.resume ?(
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Resume
-                    </label>
-
                     <div className="flex items-center gap-2">
                       <p className="text-sm text-gray-600">
                         Link:{" "}

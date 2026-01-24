@@ -115,7 +115,7 @@ const ApplicationViewer = () => {
                     <div className="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-4">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
-                          <h2 className="text-lg font-semibold text-white">
+                          <h2 className="text-lg font-semibold text-white capitalize">
                             {job.title}
                           </h2>
                           <div className="flex flex-wrap items-center gap-4 mt-2 text-blue-100">
@@ -128,7 +128,7 @@ const ApplicationViewer = () => {
                               <span className="text-sm capitalize">{job.type}</span>
                             </div>
                             <div className="flex items-center gap-1">
-                              <span className="text-sm">{job.category}</span>
+                              <span className="text-sm capitalize">{job.category}</span>
                             </div>
                           </div>
                         </div>
@@ -165,16 +165,16 @@ const ApplicationViewer = () => {
 
                               {/* applicant info  */}
                               <div className="min-w-0 flex-1">
-                                <h3 className="font-semibold text-gray-900">
+                                <h3 className="font-semibold text-gray-900 capitalize">
                                   {application.applicant.name}
                                 </h3>
                                 <p className="text-gray-600 text-sm">
                                     {application.applicant.email}
                                 </p>
-                                <div className="flexs items-center gap-1 mt-1 text-gray-500 text-xs">
+                                <div className="flex items-center gap-1 mt-1 text-gray-500 text-xs">
                                   <Calendar className='h-3 w-3'/>
                                   <span>
-                                    Applied {" "}
+                                    Applied on {" "}
                                     {moment(application.createdAt).format(
                                       "DD MM YYYY"
                                     )}

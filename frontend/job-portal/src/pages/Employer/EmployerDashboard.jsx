@@ -128,7 +128,7 @@ const EmployerDashboard = () => {
             subtitle="Your Latest Job Postings"
             headerAction={
               <button
-              className='text-sm text-blue-600 hover:text-blue-700 font-medium'
+              className='text-sm text-blue-600 hover:text-blue-700 font-medium hover:cursor-pointer'
               onClick={()=>navigate("/manage-jobs")}
               >View all</button>
             }
@@ -144,7 +144,7 @@ const EmployerDashboard = () => {
             subtitle="Latest Candidate Applications"
             headerAction={
               <button
-              className='text-sm text-blue-600 hover:text-blue-700 font-medium'
+              className='text-sm text-blue-600 hover:text-blue-700 font-medium hover:cursor-pointer'
               onClick={()=>navigate("/manage-jobs")}
               >View all</button>
             }

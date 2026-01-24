@@ -58,14 +58,14 @@ const JobDetails = () => {
       <div className="container mx-auto pt-24">
         {/* main content card  */}
         <button onClick={() => navigate('/find-jobs')}
-          className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all duration-200 shadow-sm"
+          className="mb-6 ml-3 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all duration-200 shadow-sm"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Jobs
         </button>
 
         {jobDetails && (
-          <div className="bg-white p-6 rounded-lg">
+          <div className="bg-white p-6 rounded-lg border border-gray-300 ml-3 mr-3 xs:ml-0 xs:mr-0">
             {/* hero seection with clean background  */}
             <div className="relative px-0 pb-8 border-b border-gray-100">
               <div className="relative z-10">
@@ -81,14 +81,14 @@ const JobDetails = () => {
                   )}
 
                   <div className="flex-1">
-                    <h1 className="text-lg lg:text-xl font-semibold mb-2 leading-tight text-gray-900">
+                    <h1 className="text-lg lg:text-xl font-semibold mb-2 leading-tight text-gray-900 capitalize">
                       {jobDetails.title}
                     </h1>
 
                     <div className="flex items-center space-x-4 text-gray-600">
                       <div className="flex items-center space-x-2">
                         <MapPin className='h-4 w-4'/>
-                        <span className="text-sm font-medium">
+                        <span className="text-sm font-medium capitalize">
                           {jobDetails.location}
                         </span>
                       </div>
@@ -108,17 +108,17 @@ const JobDetails = () => {
 
                 {/* tags  */}
                 <div className="flex flex-wrap gap-3">
-                  <span className="px-4 py-2 bg-blue-50 text-sm text-blue-700 font-semibold rounded-full border border-blue-200">
+                  <span className="px-4 py-2 bg-blue-50 text-sm text-blue-700 font-semibold rounded-full border border-blue-200 capitalize">
                     {jobDetails.category}
                   </span>
-                  <span className="px-4 py-2 bg-purple-50 text-sm text-purple-700 font-semibold rounded-full border border-purple-200">
+                  <span className="px-4 py-2 bg-purple-50 text-sm text-purple-700 font-semibold rounded-full border border-purple-200 capitalize">
                     {jobDetails.type}
                   </span>
                   <div className="flex items-center space-x-1 px-4 py-2 bg-gray-50 text-sm text-gray-700 font-semibold rounded-full border border-gray-200">
                     <Clock className='h-4 w-4'/>
                     <span>
                       {jobDetails.createdAt
-                      ? moment(jobDetails.createdAt).format("Do MMY YYYY")
+                      ? moment(jobDetails.createdAt).format("Do MMM YYYY")
                       : "N/A"}
                     </span>
                   </div>

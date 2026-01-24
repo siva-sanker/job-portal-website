@@ -2,7 +2,7 @@ import {ChevronDown} from "lucide-react"
 import { useNavigate } from "react-router-dom"
 
 const ProfileDropdown = ({isOpen,onToggle,avatar,companyName,email,onLogout,userRole}) => {
-  const navigate=useNavigate();
+  const navigate=useNavigate();  
   return <div className="relative">
       <button 
         onClick={onToggle}
