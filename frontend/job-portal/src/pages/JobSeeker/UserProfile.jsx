@@ -20,7 +20,7 @@ const UserProfile = () => {
     avatar:user?.avatar || "",
     resume:user?.resume || "",
   });
-console.log(profileData);
+// console.log(profileData);
 
   const [formData,setFormData]=useState({...profileData});
   const [uploading,setUploading]=useState({avatar:false,logo:false});
@@ -213,7 +213,7 @@ console.log(profileData);
                   <div>
                     <label className="block">
                       <span className="sr-only">Choose File</span>
-                      <input type="file" onClick={(e)=>{handleImageChange(e,"resume")}} 
+                      <input type="file" onChange={(e)=>handleImageChange(e,"resume")} accept='pdf/*'
                         className='block w-full text-gray-500 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition-colors'
                       />
                     </label>

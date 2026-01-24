@@ -11,6 +11,7 @@ import FilterContent from './components/FilterContent';
 import SearchHeader from './components/SearchHeader';
 import Navbar from '../../components/layout/Navbar';
 import JobCard from '../../components/Cards/JobCard';
+import ResumeModal from '../../components/ResumeModal';
 
 const JobSeekerDashboard = () => {
 
@@ -20,7 +21,10 @@ const JobSeekerDashboard = () => {
   const [loading,setLoading] = useState(false);
   const [viewMode,setViewMode]= useState("grid");
   const [showMobileFilters,setShowMobileFilters]= useState(false);
-  const [error,setError]=useState(null)
+  const [error,setError]=useState(null);
+  const [showResumeModal, setShowResumeModal] = useState(false);
+  const [selectedJobId, setSelectedJobId] = useState(null);
+
 
   const navigate=useNavigate();
 
@@ -172,18 +176,30 @@ const JobSeekerDashboard = () => {
     }
   };
 
-  const applyToJob= async(jobId)=>{
-    try{
-      if(jobId){
-        await axiosInstance.post(API_PATHS.APPLICATIONS.APPLY_TO_JOB(jobId));
-        toast.success("Applied to job successfully!");
-      }
+  const handleResumeSubmit = async (resumeFile) => {
+    try {
+      if (!selectedJobId || !resumeFile) return;   
+
+      const formData = new FormData();
+      formData.append("resume", resumeFile);
+
+      await axiosInstance.post(
+        API_PATHS.APPLICATIONS.APPLY_TO_JOB(selectedJobId),
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      toast.success("Applied to job successfully!");
+      setShowResumeModal(false);
+      setSelectedJobId(null);
       fetchJobs();
-    }
-    catch(err){
-      console.error("Error:",err);
-      const errorMsg= err?.response?.data?.message
-      toast.error("Something went wrong! Try again later");
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to apply. Please try again.");
     }
   };
 
@@ -204,7 +220,8 @@ const JobSeekerDashboard = () => {
       toast.error("Please log in to apply for jobs");
       return;
     }
-    applyToJob(jobId);
+    setSelectedJobId(jobId);
+    setShowResumeModal(true);
   };
 
   return (
@@ -325,6 +342,16 @@ const JobSeekerDashboard = () => {
             </div>
           </div>
         </div>
+
+        <ResumeModal
+          isOpen={showResumeModal}
+          onClose={() => {
+            setShowResumeModal(false);
+            setSelectedJobId(null);
+          }}
+          onSubmit={handleResumeSubmit}
+        />
+
 
         {/* mobile filter overlay  */}
         <MobileFilterOverlay />

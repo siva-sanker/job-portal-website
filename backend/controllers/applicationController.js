@@ -15,11 +15,12 @@ exports.applyToJob= async(req,res)=>{
 		if(existing){
 			return res.status(400).json({message:"Already applied to this job"});
 		}
+		const resumeUrl = req.file ? `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}` : null;
 
 		const application= await Application.create({
 			job:req.params.jobId,
 			applicant:req.user._id,
-			resume:req.user.resume,
+			resume:resumeUrl,
 		});
 
 		res.status(201).json({message:"Application to job successful",data:application})
@@ -48,8 +49,8 @@ exports.getApplicantsForJob= async(req,res)=>{
 			return res.status(403).json({ message:"Not authorized to view applicants"});
 		}
 
-		const applications=await Application.find({job:req.params.jobId}).populate("job","title location category type")
-		.populate("applicant","name email avatar resume");
+		const applications=await Application.find({job:req.params.jobId}).populate("job","title location category type resume")
+		.populate("applicant","name email avatar");
 
 		res.json(applications);
 	}
