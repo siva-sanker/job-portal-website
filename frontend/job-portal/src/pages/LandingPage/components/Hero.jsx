@@ -34,7 +34,7 @@ const Hero = () => {
           className='text-xl md:text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed capitalize'
           >
            connect talented professionals with innovative companies.
-           your nex career move or perfect candidate is just one click away. 
+           your next career move or perfect candidate is just one click away. 
           </motion.p>
 
           {/* cta buttons */}

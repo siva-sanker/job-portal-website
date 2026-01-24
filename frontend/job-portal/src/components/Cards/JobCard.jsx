@@ -34,7 +34,7 @@ const JobCard = ({job,onClick,onToggleSave,onApply,saved,hideApply}) => {
             <h3 className="font-semibold text-gray-900 text-base group-hover:text-blue-600 transition-colors leading-snug capitalize">
               {job?.title}
             </h3>
-            <p className="text-gray-600 text-sm flex items-center gap-2 mt-1">
+            <p className="text-gray-600 text-sm flex items-center gap-2 mt-1 capitalize">
               <Building className='w-3.5 h-3.5' />
               {job?.company?.companyName}
             </p>
