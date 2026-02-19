@@ -39,7 +39,7 @@ const Header = () => {
           <div className='flex items-center space-x-3'>
             {isAuthenticated?(
               <div className='flex items-center space-x-3'>
-                <span className='text-gray-700'>welcome, {user?.fullName}</span>
+                <span className='text-gray-700'>Welcome, {user?.fullName}</span>
                 <a href={user.role==='employer'?'/employer-dashboard':'/find-jobs'} 
                 className='bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:from blue-700 to-purple-700 transition-all duration-300 shadow-sm hover:shadow-md'>Dashboard</a>
               </div>
