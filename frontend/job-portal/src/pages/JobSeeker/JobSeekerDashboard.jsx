@@ -32,8 +32,8 @@ const JobSeekerDashboard = () => {
   const [filters,setFilters]= useState({
     keyword:"",
     location:"",
-    category:"",
-    type:"",
+    category:[],
+    type:[],
     minSalary:"",
     maxSalary:""
   });
@@ -58,10 +58,16 @@ const JobSeekerDashboard = () => {
         params.append("minSalary",filterParams.minSalary)
       if(filterParams.maxSalary)
         params.append("maxSalary",filterParams.maxSalary)
-      if(filterParams.type)
-        params.append("type",filterParams.type)
-      if(filterParams.category)
-        params.append("category",filterParams.category)
+      if (filterParams.type?.length) {
+        filterParams.type.forEach((t) => {
+          params.append("type", t);
+        });
+      }
+      if (filterParams.category?.length) {
+        filterParams.category.forEach((c) => {
+          params.append("category", c);
+        });
+      }
       if(user) params.append("userId",user?._id);
 
       const response= await axiosInstance.get(
@@ -94,13 +100,10 @@ const JobSeekerDashboard = () => {
         remoteOnly:filters.remoteOnly
       };
 
-      const hasFilters= Object.values(apiFilters).some(
-        (value)=>
-          value !=="" &&
-          value !== false &&
-          value !== null &&
-          value !== undefined
-      );
+      const hasFilters = Object.entries(apiFilters).some(([key, value]) => {
+        if (Array.isArray(value)) return value.length > 0;
+        return value !== "" && value !== false && value !== null && value !== undefined;
+      });
 
       if(hasFilters){
         fetchJobs(apiFilters);
@@ -113,8 +116,24 @@ const JobSeekerDashboard = () => {
     return ()=>clearTimeout(timeoutId);
   },[filters,user]);
 
-  const handleFilterChange=(key,value)=>{
-    setFilters((prev)=>({...prev, [key]:value }));
+  const handleFilterChange=(field,value)=>{
+    setFilters((prev) => {
+    const currentValues = prev[field];
+
+    if (Array.isArray(currentValues)) {
+      return {
+        ...prev,
+        [field]: currentValues.includes(value)
+          ? currentValues.filter((item) => item !== value) // remove
+          : [...currentValues, value] // add
+      };
+    }
+
+    return {
+      ...prev,
+      [field]: value
+    };
+  });
   };
   const toggleSection=(section)=>{
     setExpandedSections((prev)=>({...prev, [section]:!prev[section] }));
@@ -124,8 +143,8 @@ const JobSeekerDashboard = () => {
     setFilters({
       keyword:"",
       location:'',
-      category:"",
-      type:"",
+      category:[],
+      type:[],
       minSalary:"",
       maxSalary:"",
     });
@@ -150,7 +169,7 @@ const JobSeekerDashboard = () => {
               toggleSection={toggleSection}
               clearAllFilters={clearAllFilters}
               expandedSections={expandedSections}
-              filers={filters}
+              filters={filters}
               handleFilterChange={handleFilterChange}
             />
           </div>

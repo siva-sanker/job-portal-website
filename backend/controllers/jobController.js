@@ -23,8 +23,16 @@ exports.getJobs= async(req,res)=>{
 		isClosed:false,
 		...(keyword && { title:{$regex:keyword, $options:"i"}}),
 		...(location && { location:{$regex:location, $options:"i"}}),
-		...(category && { category}),
-		...(type && { type }),
+		...(category && {
+			category: {
+				$in: Array.isArray(category) ? category : [category]
+			}
+		}),
+		...(type && {
+			type: {
+				$in: Array.isArray(type) ? type : [type]
+			}
+		}),
 
 	};
 
@@ -34,7 +42,7 @@ exports.getJobs= async(req,res)=>{
 			query.$and.push({salaryMax: {$gte: Number(minSalary)}});
 		}
 		if(maxSalary){
-			query.$and.push({salaryMin: {$gte: Number(maxSalary)}});
+			query.$and.push({salaryMin: {$lte: Number(maxSalary)}});
 		}
 
 		if(query.$and.length ===0){

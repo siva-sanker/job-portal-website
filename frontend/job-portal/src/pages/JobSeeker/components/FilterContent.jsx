@@ -39,9 +39,9 @@ const FilterContent = ({toggleSection,clearAllFilters,expandedSections,filters,h
           <label key={type.value} className="flex items-center cursor-pointer">
             <input type="checkbox"
               className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-              checked={filters?.type=== type.value}
-              onChange={(e)=>
-                handleFilterChange("type",e.target.checked ? type.value:"")
+              checked={filters?.type?.includes(type.value)}
+              onChange={()=>
+                handleFilterChange("type",type.value)
               } 
               />
             <span className="ml-3 text-gray-700 font-medium capitalize">{type.value}</span>
@@ -66,10 +66,8 @@ const FilterContent = ({toggleSection,clearAllFilters,expandedSections,filters,h
           <label className="flex items-center cursor-pointer">
             <input type="checkbox"
               className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-              checked={filters?.category=== type.value}
-              onChange={(e)=>
-                handleFilterChange("category",e.target.checked ? type.value : "")
-              } 
+              checked={filters?.category?.includes(type.value)}
+              onChange={() => handleFilterChange("category", type.value)}
             />
             <span className="ml-3 text-gray-700 font-medium capitalize">{type.value}</span>
           </label>
