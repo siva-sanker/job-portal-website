@@ -12,6 +12,7 @@ const savedJobsRoutes= require("./routes/savedJobRoutes");
 const analyticsRoutes= require("./routes/analyticsRoutes");
 
 const app=express();
+app.set('trust proxy', 1);
 
 app.use(
     cors({
